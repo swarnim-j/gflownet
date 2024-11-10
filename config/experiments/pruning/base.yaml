@@ -1,0 +1,57 @@
+# @package _global_
+defaults:
+  - override /env: pruning
+  - override /gflownet: trajectorybalance
+  - override /policy: mlp
+  - override /proxy: pruning
+  - override /logger: wandb
+
+# Environment settings
+env:
+  test_dataset: cifar10
+  batch_size: 128
+  num_workers: 4
+  buffer:
+    test:
+      type: random
+      n: 100
+      output_csv: pruning_test.csv
+      output_pkl: pruning_test.pkl
+
+# Proxy settings
+proxy:
+  reward_function: exponential
+  beta: 5
+  batch_size: 32
+
+# GFlowNet settings
+gflownet:
+  random_action_prob: 0.1
+  optimizer:
+    batch_size:
+      forward: 100
+    lr: 0.0001
+    z_dim: 16
+    lr_z_mult: 100
+    n_train_steps: 10000
+
+# Policy settings
+policy:
+  forward:
+    type: mlp
+    n_hid: 256
+    n_layers: 4
+  backward:
+    shared_weights: True
+
+# Logger settings
+logger:
+  do:
+    online: True
+  project_name: neural_pruning
+  tags:
+    - gflownet
+    - pruning
+
+# Device settings
+device: cpu

@@ -46,8 +46,6 @@ class GFlowNetEnv:
         self.conditional = conditional
         # Flag whether env is continuous
         self.continuous = continuous
-        # Call reset() to set initial state, done, n_actions
-        self.reset()
         # Device
         self.device = set_device(device)
         # Float precision
@@ -56,6 +54,8 @@ class GFlowNetEnv:
         self.skip_mask_check = skip_mask_check
         # Log SoftMax function
         self.logsoftmax = torch.nn.LogSoftmax(dim=1)
+        # Call reset() to set initial state, done, n_actions
+        self.reset()
         # Action space
         self.action_space = self.get_action_space()
         self.action_space_torch = torch.tensor(

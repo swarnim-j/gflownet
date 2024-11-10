@@ -18,3 +18,7 @@ docs/_build/
 logs/
 gfn_samples.pkl
 gfn_samples.csv
+data/MNIST/
+data/cifar-10-batches-py/
+wandb/
+models/lenet5_pretrained.pt

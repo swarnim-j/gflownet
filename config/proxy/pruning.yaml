@@ -1,0 +1,16 @@
+defaults:
+  - base
+
+_target_: gflownet.proxy.pruning.PruningProxy
+
+# Weights for different components of the energy function
+accuracy_weight: 1.0
+sparsity_weight: 0.3
+flops_weight: 0.2
+min_accuracy: 0.6
+
+# General proxy settings
+normalize: True
+batch_size: 32
+reward_function: exponential
+beta: 5.0

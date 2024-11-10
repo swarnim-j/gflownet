@@ -596,6 +596,15 @@ class BaseEvaluator(AbstractEvaluator):
                 **plot_kwargs,
             )
 
+        if fig_reward_samples is not None:
+            fig_reward_samples.savefig("reward_samples.png")
+        if fig_kde_pred is not None:
+            fig_kde_pred.savefig("kde_pred.png")
+        if fig_kde_true is not None:
+            fig_kde_true.savefig("kde_true.png")
+        if fig_samples_topk is not None:
+            fig_samples_topk.savefig("samples_topk.png")
+
         return {
             "True reward and GFlowNet samples": fig_reward_samples,
             "GFlowNet KDE Policy": fig_kde_pred,
